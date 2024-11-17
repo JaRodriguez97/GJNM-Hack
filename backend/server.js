@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 const excelRoutes = require("./src/routes/excelRoutes.js");
@@ -11,6 +12,9 @@ const mongoose = require("./src/config/database");
 const morgan = require("morgan");
 
 app.use(morgan("dev"));
+
+// Configuración de CORS
+app.use(cors("*"));
 
 // const server = http.createServer(app);
 // const io = socketIo(server);
