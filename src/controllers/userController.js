@@ -50,7 +50,10 @@ const sendDataHoja1 = async (req, res) => {
   ]).catch((err) => console.error("Error en la agregación:", err));
 
   console.log("Resultados filtrados:", results);
-  res.status(200).send(results);
+
+  let coord = results.map(({ windSpeedAvg }, k) => ({ x: k, y: windSpeedAvg }));
+
+  res.status(200).send(coord);
 };
 
 module.exports = {
